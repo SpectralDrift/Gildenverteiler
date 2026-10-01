@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gildenverteiler</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <nav><a href="hilfe.html">Wie funktioniert die Verteilung?</a><button id="logout" type="button">Abmelden</button></nav>
+    <header><span class="rune">ᛉ</span><div><h1>Gildenverteiler</h1><p>Eine faire Verteilung nach den Wünschen aller Wikinger.</p></div></header>
+    <section class="panel">
+      <div class="section-heading"><div><h2>Gilden</h2><p>Für jede Gilde können Mindest- und Höchstgröße getrennt festgelegt werden.</p></div></div>
+      <div id="guilds" class="fields"></div>
+      <p id="size-status" role="status" aria-live="polite"></p>
+    </section>
+    <section class="panel">
+      <div class="section-heading"><div><h2>Wikinger &amp; Wünsche</h2></div><button id="add-viking" type="button">+ Wikinger</button></div>
+      <div id="vikings"></div>
+    </section>
+    <button id="calculate" class="primary" type="button">Optimale Verteilung auslosen</button>
+    <p id="error" role="alert"></p>
+    <section id="result" class="result" hidden></section>
+    <section class="config-bar">
+      <div><strong>Gespeicherte Konfigurationen</strong><small> </small></div>
+      <div class="config-actions">
+        <input id="config-name" maxlength="50" pattern="[A-Za-zÄÖÜäöüß0-9_.-]+" placeholder="Konfigurationsname" aria-label="Konfigurationsname">
+        <button id="save-config" type="button">Speichern</button>
+        <select id="saved-configs" aria-label="Gespeicherte Konfiguration"></select>
+        <button id="load-config" type="button">Laden</button>
+        <button id="delete-config" class="remove" type="button">Löschen</button>
+      </div>
+      <p id="config-status" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+
+configurations/*.json
+!configurations/.gitkeep
+
+.agents/
+.codex/
+AGENTS.md
+default_vikings.json

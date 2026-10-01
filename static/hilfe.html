@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hilfe · Gildenverteiler</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="help">
+    <nav><a href="index.html">← Zurück zum Gildenverteiler</a></nav>
+    <header>
+      <span class="rune">ᚨ</span>
+      <div><h1>So wird verteilt</h1><p>Vom Wunschzettel zur optimalen Gildenzuordnung.</p></div>
+    </header>
+
+    <div class="help-content">
+    <section class="panel">
+      <h2>Das Ziel</h2>
+      <p>Der Gildenverteiler sucht die Zuordnung mit der höchsten gemeinsamen Wunschpunktzahl. Gleichzeitig müssen die vorgegebenen Größenbereiche der sechs Gilden eingehalten werden.</p>
+      <p>Der Algorithmus bevorzugt keine Namen oder Gilden. Für das Ergebnis zählen ausschließlich die Wunschlisten und die vorgeschriebenen Gruppengrößen.</p>
+    </section>
+
+    <section class="panel">
+      <h2>1. Punkte für die Wünsche</h2>
+      <p>Bei sechs Gilden erhält ein erfüllter erster Wunsch 6 Punkte. Jeder folgende Rang ist einen Punkt weniger wert:</p>
+      <table class="example-table">
+        <thead><tr><th>Wunschstufe</th><th>Punkte</th></tr></thead>
+        <tbody>
+          <tr><td>1. Wunsch</td><td>6</td></tr>
+          <tr><td>2. Wunsch</td><td>5</td></tr>
+          <tr><td>3. Wunsch</td><td>4</td></tr>
+          <tr><td>4. Wunsch</td><td>3</td></tr>
+          <tr><td>5. Wunsch</td><td>2</td></tr>
+          <tr><td>6. Wunsch</td><td>1</td></tr>
+        </tbody>
+      </table>
+      <p>Die Punktzahlen aller Wikinger werden addiert. Bei 18 Wikingern beträgt das theoretische Maximum daher <strong>18 × 6 = 108 Punkte</strong>.</p>
+    </section>
+
+    <section class="panel">
+      <h2>2. Was bedeutet „egal“?</h2>
+      <p>Mehrere Einträge mit „egal“ stehen für die nicht ausdrücklich genannten Gilden. Diese Gilden sind untereinander gleichwertig und teilen sich die Wunschstufe des ersten „egal“-Eintrags.</p>
+      <h3>Beispiel: zwei gleichwertige Gilden in der Mitte</h3>
+      <div class="formula">Jäger, Köche, Steinmetze, egal, egal, Schmelzer</div>
+      <table class="example-table">
+        <thead><tr><th>Gilde</th><th>Wertung</th></tr></thead>
+        <tbody>
+          <tr><td>Jäger</td><td>1. Wunsch · 6 Punkte</td></tr>
+          <tr><td>Köche</td><td>2. Wunsch · 5 Punkte</td></tr>
+          <tr><td>Steinmetze</td><td>3. Wunsch · 4 Punkte</td></tr>
+          <tr><td>die zwei nicht genannten Gilden</td><td>4. Wunsch (egal) · je 3 Punkte</td></tr>
+          <tr><td>Schmelzer</td><td>6. Wunsch · 1 Punkt</td></tr>
+        </tbody>
+      </table>
+      <p>Die beiden gleichwertigen Gilden belegen gemeinsam den 4. Wunsch. Der nächste ausdrücklich genannte Wunsch bleibt trotzdem an seiner eingetragenen Position.</p>
+
+      <h3>Beispiel: nur eine Gilde ist unerwünscht</h3>
+      <div class="formula">egal, egal, egal, egal, egal, Steinmetze</div>
+      <p>Alle anderen Gilden teilen sich den 1. Wunsch und geben jeweils 6 Punkte. Steinmetze bleibt mit 1 Punkt der ausdrückliche letzte Wunsch.</p>
+
+      <h3>Wenn wirklich jede Gilde gleich gut ist</h3>
+      <div class="formula">egal, egal, egal, egal, egal, egal</div>
+      <p>Jede mögliche Gilde erfüllt den Wunsch vollständig und gibt 6 von 6 Punkten. Diese Wunschliste beeinflusst also nicht, welcher Gilde die Person zugeordnet wird.</p>
+
+      <p>Ein einzelnes „egal“ wäre überflüssig, weil dann nur eine ungenannte Gilde übrig ist. Die Anwendung trägt diese Gilde automatisch ein; „egal“ kommt daher entweder gar nicht oder mindestens zweimal vor.</p>
+    </section>
+
+    <section class="panel">
+      <h2>3. Warum können trotz „1. Wunsch oder egal“ Punkte fehlen?</h2>
+      <p>Entscheidend ist die Position des ersten „egal“-Eintrags. Ein <strong>2. Wunsch (egal)</strong> gibt 5 Punkte, ein <strong>3. Wunsch (egal)</strong> gibt 4 Punkte und so weiter.</p>
+      <p>Ein Ergebnis von 106 aus 108 Punkten kann beispielsweise bedeuten, dass 16 Wikinger jeweils 6 Punkte und zwei Wikinger jeweils 5 Punkte durch einen „2. Wunsch (egal)“ erhalten haben:</p>
+      <div class="formula">16 × 6 + 2 × 5 = 106</div>
+      <p>Die Ergebnisliste zeigt deshalb nicht nur „egal“, sondern zum Beispiel <strong>2. Wunsch (egal)</strong>.</p>
+    </section>
+
+    <section class="panel">
+      <h2>4. Erlaubte und feste Gildengrößen</h2>
+      <p>Als Ausgangspunkt sind für jede Gilde folgende Größenbereiche eingetragen:</p>
+      <table class="example-table">
+        <thead><tr><th>Gilde</th><th>Spieler</th></tr></thead>
+        <tbody>
+          <tr><td>Bauern</td><td>2–3</td></tr>
+          <tr><td>Holzfäller</td><td>2–3</td></tr>
+          <tr><td>Köche</td><td>2–3</td></tr>
+          <tr><td>Jäger</td><td>5–6</td></tr>
+          <tr><td>Schmelzer</td><td>4–5</td></tr>
+          <tr><td>Steinmetze</td><td>3–4</td></tr>
+        </tbody>
+      </table>
+      <p>Minimum und Maximum können für jede Gilde getrennt geändert werden. Zulässig sind ausschließlich ganze Werte von <strong>2 bis 8 Spielern</strong>. Der Algorithmus darf anschließend jede Größe innerhalb des eingestellten Bereichs wählen. Sind Minimum und Maximum gleich, ist die Größe dieser Gilde exakt festgelegt.</p>
+      <p>Bei 18 Wikingern ist nur die jeweilige Mindestgröße möglich:</p>
+      <div class="formula">Bauern 2 · Holzfäller 2 · Köche 2 · Jäger 5 · Schmelzer 4 · Steinmetze 3</div>
+      <p>Bei mehr Wikingern entscheidet die Optimierung anhand der Wünsche, welche Gilden zusätzliche Plätze innerhalb ihrer Grenzen erhalten. Die Summe aller Mindestgrößen darf nicht über der Wikingerzahl liegen; die Summe aller Höchstgrößen darf nicht darunter liegen. Andernfalls ist keine Verteilung möglich.</p>
+    </section>
+
+    <section class="panel">
+      <h2>5. Wie findet der Algorithmus das Optimum?</h2>
+      <p>Eine einfache Verteilung der Reihe nach könnte frühe Wikinger bevorzugen und für spätere nur noch schlechte Plätze übrig lassen. Deshalb wird keine Zuordnung sofort endgültig festgelegt.</p>
+      <p>Der Algorithmus verarbeitet die Wikinger schrittweise. Für jede mögliche Zwischenbelegung der sechs Gilden merkt er sich:</p>
+      <ul>
+        <li>die bisher höchste erreichbare Punktzahl,</li>
+        <li>wie viele Zuordnungswege diese Punktzahl erreichen,</li>
+        <li>und aus welchen vorherigen Belegungen sie entstanden sind.</li>
+      </ul>
+      <p>Zwei Zwischenwege mit derselben Gildenbelegung haben anschließend genau dieselben Möglichkeiten. Der Weg mit der niedrigeren bisherigen Punktzahl kann daher sicher verworfen werden. Dieses Verfahren heißt <em>dynamische Optimierung</em>.</p>
+      <p>Am Ende betrachtet das Programm nur Belegungen mit zulässigen Gruppengrößen und wählt die höchste Gesamtpunktzahl. Es handelt sich damit um ein berechnetes Optimum und nicht um eine Schätzung.</p>
+    </section>
+
+    <section class="panel">
+      <h2>6. Was passiert bei mehreren optimalen Lösungen?</h2>
+      <p>Häufig erreichen mehrere verschiedene Zuordnungen dieselbe höchste Punktzahl. Das Programm zählt diese optimalen Lösungen und zeigt ihre Anzahl an.</p>
+      <p>Aus allen gleich guten Lösungen wird bei jeder Berechnung eine zufällig ausgewählt. Die Eingabereihenfolge entscheidet dadurch nicht über den Gewinner eines Gleichstands.</p>
+      <ul>
+        <li>Der Zufall verändert niemals die optimale Punktzahl.</li>
+        <li>Eine erneute Auslosung kann eine andere, aber ebenso gute Zuordnung ergeben.</li>
+        <li>Gibt es nur eine optimale Lösung, bleibt die Zuordnung unverändert.</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>Was „optimal“ hier bedeutet</h2>
+      <p><strong>Optimal ist die höchste Summe der Wunschpunkte unter Einhaltung aller Gildengrößen.</strong></p>
+      <p>Das maximiert die gemeinsame Zufriedenheit. Es garantiert nicht, dass jede einzelne Person ihren persönlich besten erreichbaren Wunsch bekommt. Manchmal kostet ein schlechterer Wunsch bei einer Person weniger Punkte, als eine andere Verteilung bei mehreren Personen zusammen kosten würde.</p>
+    </section>
+
+    </div>
+
+  </main>
+</body>
+</html>

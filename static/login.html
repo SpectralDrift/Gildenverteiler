@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anmeldung · Gildenverteiler</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="login-page">
+    <section class="panel login-panel">
+      <span class="rune">ᛉ</span>
+      <h1>Gildenverteiler</h1>
+      <p>Diese Seite ist nur für eingeladene Personen zugänglich.</p>
+      <form id="login-form">
+        <label for="password">Gemeinsames Passwort</label>
+        <input id="password" name="password" type="password" minlength="16" autocomplete="current-password" required autofocus>
+        <button class="primary" type="submit">Anmelden</button>
+      </form>
+      <p id="login-error" role="alert"></p>
+    </section>
+  </main>
+  <script src="login.js"></script>
+</body>
+</html>
