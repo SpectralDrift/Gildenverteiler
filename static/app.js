@@ -116,6 +116,7 @@ function refreshRanking(row, suppliedRanking = null) {
         if (duplicate) { duplicate.value = previous; duplicate.dataset.previous = previous; }
       }
       select.dataset.previous = select.value;
+      ensureEqualPair(area, select);
       fillSingleEqual(area);
       updateRankingState(area);
     });
@@ -127,6 +128,18 @@ function refreshRanking(row, suppliedRanking = null) {
 
 function rankingValues(row) {
   return [...row.querySelectorAll('.ranking select')].map(select => select.value === 'equal' ? null : Number(select.value));
+}
+
+function ensureEqualPair(area, changedSelect) {
+  const selects = [...area.querySelectorAll('select')];
+  if (changedSelect.value !== 'equal'
+      || selects.filter(select => select.value === 'equal').length !== 1
+      || selects.length < 2) return false;
+  const index = selects.indexOf(changedSelect);
+  const companion = selects[index + 1] || selects[index - 1];
+  companion.value = 'equal';
+  companion.dataset.previous = 'equal';
+  return true;
 }
 
 function fillSingleEqual(area) {
